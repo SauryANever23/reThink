@@ -1,0 +1,177 @@
+import { a as number, n as array, o as object, s as string } from "../_libs/zod.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/catalog-gU5nJfsC.js
+var prioritiesSchema = object({
+	performance: number().min(0).max(100),
+	value: number().min(0).max(100),
+	longevity: number().min(0).max(100),
+	portability: number().min(0).max(100),
+	quality: number().min(0).max(100)
+});
+var decisionInputSchema = object({
+	budget: number().min(0).max(1e6),
+	goals: array(string().min(1).max(40)).max(12),
+	mustHaves: array(string().max(40)).max(12),
+	wants: array(string().max(40)).max(12),
+	alreadyOwn: array(string().max(40)).max(12),
+	priorities: prioritiesSchema,
+	forceIncludeIds: array(string().max(80)).max(12).optional(),
+	forceExcludeIds: array(string().max(80)).max(20).optional(),
+	minRemaining: number().min(0).max(1e6).optional()
+});
+var whatIfPatchSchema = object({
+	budgetDelta: number().nullable().optional(),
+	budgetSet: number().min(0).nullable().optional(),
+	minRemaining: number().min(0).nullable().optional(),
+	priorities: prioritiesSchema.nullable().optional(),
+	removeCategories: array(string()).nullable().optional(),
+	addMustHaves: array(string()).nullable().optional(),
+	addWants: array(string()).nullable().optional(),
+	addAlreadyOwn: array(string()).nullable().optional(),
+	forceIncludeIds: array(string()).nullable().optional(),
+	forceExcludeIds: array(string()).nullable().optional(),
+	summary: string().max(240)
+});
+var categories_default = [
+	{
+		"id": "laptop",
+		"label": "Laptop",
+		"singular": "laptop",
+		"hint": "A portable computer for work, study, or creation"
+	},
+	{
+		"id": "monitor",
+		"label": "Monitor",
+		"singular": "monitor",
+		"hint": "An external display for more screen space"
+	},
+	{
+		"id": "headphones",
+		"label": "Headphones",
+		"singular": "headphones",
+		"hint": "Focus, calls, music, or mixing"
+	},
+	{
+		"id": "keyboard",
+		"label": "Keyboard",
+		"singular": "keyboard",
+		"hint": "A better typing experience than a laptop deck"
+	},
+	{
+		"id": "mouse",
+		"label": "Mouse",
+		"singular": "mouse",
+		"hint": "A pointing device you already may own"
+	},
+	{
+		"id": "phone",
+		"label": "Phone",
+		"singular": "phone",
+		"hint": "A smartphone for communication and capture"
+	},
+	{
+		"id": "backpack",
+		"label": "Backpack",
+		"singular": "backpack",
+		"hint": "Carry the kit without wrecking your back"
+	},
+	{
+		"id": "storage",
+		"label": "Storage",
+		"singular": "drive",
+		"hint": "SSD or portable drive for files and projects"
+	}
+];
+var demo_decision_default = {
+	budget: 1e3,
+	goals: ["programming", "university"],
+	mustHaves: ["laptop"],
+	wants: [
+		"monitor",
+		"headphones",
+		"keyboard"
+	],
+	alreadyOwn: ["mouse", "backpack"],
+	priorities: {
+		"performance": 40,
+		"value": 20,
+		"longevity": 25,
+		"portability": 15,
+		"quality": 0
+	}
+};
+var products = /* @__PURE__ */ JSON.parse("[{\"id\":\"laptop_chromebook\",\"name\":\"Acer Chromebook 314\",\"brand\":\"Acer\",\"category\":\"laptop\",\"price\":329,\"summary\":\"Light, long-battery Chromebook for notes and browser work. Weak for compiling or creation.\",\"attributes\":{\"performance\":34,\"battery\":86,\"portability\":90,\"longevity\":48,\"quality\":46},\"goals\":[\"study\",\"travel\"],\"tags\":[\"chromebook\",\"budget\"]},{\"id\":\"laptop_ideapad_slim\",\"name\":\"Lenovo IdeaPad Slim 3\",\"brand\":\"Lenovo\",\"category\":\"laptop\",\"price\":429,\"summary\":\"Thin 15-inch Windows laptop that covers lectures and light coding without drama.\",\"attributes\":{\"performance\":52,\"battery\":76,\"portability\":82,\"longevity\":58,\"quality\":60},\"goals\":[\"study\",\"work\"],\"tags\":[\"windows\",\"budget\"]},{\"id\":\"laptop_aspire5\",\"name\":\"Acer Aspire 5\",\"brand\":\"Acer\",\"category\":\"laptop\",\"price\":479,\"summary\":\"Everyday 15-inch machine with a decent keyboard. Fine for coursework, tight for heavy IDEs.\",\"attributes\":{\"performance\":58,\"battery\":70,\"portability\":72,\"longevity\":60,\"quality\":62},\"goals\":[\"study\",\"programming\",\"work\"],\"tags\":[\"windows\",\"budget\"]},{\"id\":\"laptop_pavilion\",\"name\":\"HP Pavilion 15\",\"brand\":\"HP\",\"category\":\"laptop\",\"price\":599,\"summary\":\"Balanced student/work laptop with a brighter panel and enough CPU for typical coursework.\",\"attributes\":{\"performance\":66,\"battery\":68,\"portability\":64,\"longevity\":64,\"quality\":68},\"goals\":[\"study\",\"work\",\"programming\"],\"tags\":[\"windows\"]},{\"id\":\"laptop_vivobook\",\"name\":\"ASUS Vivobook 16\",\"brand\":\"ASUS\",\"category\":\"laptop\",\"price\":649,\"summary\":\"16-inch coding-friendly display, solid RAM, and a keyboard that holds up in long sessions.\",\"attributes\":{\"performance\":74,\"battery\":70,\"portability\":58,\"longevity\":70,\"quality\":72},\"goals\":[\"programming\",\"study\",\"work\"],\"tags\":[\"windows\",\"large-screen\"]},{\"id\":\"laptop_ideapad5\",\"name\":\"Lenovo IdeaPad 5\",\"brand\":\"Lenovo\",\"category\":\"laptop\",\"price\":699,\"summary\":\"Quiet, well-built midrange laptop that stays useful across a degree and a first job.\",\"attributes\":{\"performance\":76,\"battery\":74,\"portability\":70,\"longevity\":74,\"quality\":76},\"goals\":[\"programming\",\"study\",\"work\"],\"tags\":[\"windows\"]},{\"id\":\"laptop_inspiron\",\"name\":\"Dell Inspiron 15\",\"brand\":\"Dell\",\"category\":\"laptop\",\"price\":749,\"summary\":\"Reliable office-class 15-inch with better support and a sturdier hinge than budget peers.\",\"attributes\":{\"performance\":77,\"battery\":66,\"portability\":62,\"longevity\":76,\"quality\":78},\"goals\":[\"work\",\"programming\",\"study\"],\"tags\":[\"windows\"]},{\"id\":\"laptop_envy\",\"name\":\"HP Envy x360 14\",\"brand\":\"HP\",\"category\":\"laptop\",\"price\":779,\"summary\":\"Convertible 14-inch with a color-accurate screen for notes, light photo, and lectures on the move.\",\"attributes\":{\"performance\":73,\"battery\":80,\"portability\":86,\"longevity\":72,\"quality\":82},\"goals\":[\"content\",\"study\",\"travel\",\"work\"],\"tags\":[\"windows\",\"2in1\"]},{\"id\":\"laptop_tuf\",\"name\":\"ASUS TUF Gaming A15\",\"brand\":\"ASUS\",\"category\":\"laptop\",\"price\":799,\"summary\":\"Discrete GPU and a strong CPU. Heavy, loud under load, excellent for compile times and games.\",\"attributes\":{\"performance\":90,\"battery\":48,\"portability\":46,\"longevity\":68,\"quality\":72},\"goals\":[\"gaming\",\"programming\",\"content\"],\"tags\":[\"windows\",\"gaming\",\"gpu\"]},{\"id\":\"laptop_air_m2\",\"name\":\"MacBook Air 13 M2\",\"brand\":\"Apple\",\"category\":\"laptop\",\"price\":849,\"summary\":\"Refurbished M2 Air: silent, all-day battery, and a chassis that still feels current in three years.\",\"attributes\":{\"performance\":84,\"battery\":94,\"portability\":93,\"longevity\":90,\"quality\":92},\"goals\":[\"programming\",\"study\",\"content\",\"travel\",\"work\"],\"tags\":[\"macos\",\"refurbished\",\"fanless\"]},{\"id\":\"laptop_thinkpad\",\"name\":\"Lenovo ThinkPad E14 Gen 5\",\"brand\":\"Lenovo\",\"category\":\"laptop\",\"price\":889,\"summary\":\"Classic ThinkPad keyboard and build. The practical choice if this machine has to last a job.\",\"attributes\":{\"performance\":80,\"battery\":78,\"portability\":74,\"longevity\":92,\"quality\":88},\"goals\":[\"work\",\"programming\",\"study\"],\"tags\":[\"windows\",\"thinkpad\"]},{\"id\":\"laptop_msi_thin\",\"name\":\"MSI Thin 15\",\"brand\":\"MSI\",\"category\":\"laptop\",\"price\":899,\"summary\":\"Highest raw performance in this catalog. Compromises battery, weight, and long-term chassis quality.\",\"attributes\":{\"performance\":93,\"battery\":44,\"portability\":44,\"longevity\":62,\"quality\":68},\"goals\":[\"gaming\",\"programming\",\"content\"],\"tags\":[\"windows\",\"gaming\",\"gpu\"]},{\"id\":\"laptop_framework\",\"name\":\"Framework Laptop 13\",\"brand\":\"Framework\",\"category\":\"laptop\",\"price\":999,\"summary\":\"Repairable, upgradable 13-inch. You pay for longevity and ports, not peak GPU.\",\"attributes\":{\"performance\":81,\"battery\":76,\"portability\":84,\"longevity\":97,\"quality\":90},\"goals\":[\"programming\",\"work\",\"study\"],\"tags\":[\"windows\",\"repairable\"]},{\"id\":\"laptop_air_m3\",\"name\":\"MacBook Air 13 M3\",\"brand\":\"Apple\",\"category\":\"laptop\",\"price\":1099,\"summary\":\"Current Air. Same idea as the M2, with a faster chip and a slightly better screen. Over a $1,000 budget.\",\"attributes\":{\"performance\":90,\"battery\":96,\"portability\":94,\"longevity\":92,\"quality\":95},\"goals\":[\"programming\",\"study\",\"content\",\"travel\",\"work\"],\"tags\":[\"macos\",\"fanless\"]},{\"id\":\"laptop_xps13\",\"name\":\"Dell XPS 13\",\"brand\":\"Dell\",\"category\":\"laptop\",\"price\":1199,\"summary\":\"Premium Windows ultraportable. Beautiful, expensive, and tight on ports.\",\"attributes\":{\"performance\":86,\"battery\":82,\"portability\":91,\"longevity\":80,\"quality\":93},\"goals\":[\"work\",\"programming\",\"travel\",\"content\"],\"tags\":[\"windows\",\"ultrabook\"]},{\"id\":\"mon_aoc24\",\"name\":\"AOC 24B3HM 24-inch\",\"brand\":\"AOC\",\"category\":\"monitor\",\"price\":109,\"summary\":\"No-frills 1080p panel. Extra screen for documents and a second window.\",\"attributes\":{\"performance\":55,\"battery\":0,\"portability\":28,\"longevity\":70,\"quality\":58},\"goals\":[\"study\",\"work\",\"programming\"],\"tags\":[\"1080p\",\"24in\"]},{\"id\":\"mon_dell24\",\"name\":\"Dell SE2422H 24-inch\",\"brand\":\"Dell\",\"category\":\"monitor\",\"price\":139,\"summary\":\"Reliable 1080p IPS-adjacent office panel with a better stand than generic 24s.\",\"attributes\":{\"performance\":62,\"battery\":0,\"portability\":26,\"longevity\":78,\"quality\":70},\"goals\":[\"study\",\"work\",\"programming\"],\"tags\":[\"1080p\",\"24in\"]},{\"id\":\"mon_lg24\",\"name\":\"LG 24MR400 24-inch IPS\",\"brand\":\"LG\",\"category\":\"monitor\",\"price\":159,\"summary\":\"Proper IPS 1080p. Comfortable for long coding days if you sit at a desk.\",\"attributes\":{\"performance\":68,\"battery\":0,\"portability\":26,\"longevity\":76,\"quality\":74},\"goals\":[\"programming\",\"study\",\"work\"],\"tags\":[\"1080p\",\"ips\",\"24in\"]},{\"id\":\"mon_portable\",\"name\":\"ARZOPA 15.6-inch USB-C\",\"brand\":\"ARZOPA\",\"category\":\"monitor\",\"price\":169,\"summary\":\"Portable USB-C second screen. Travels; not a color-critical or gaming panel.\",\"attributes\":{\"performance\":60,\"battery\":0,\"portability\":88,\"longevity\":62,\"quality\":64},\"goals\":[\"travel\",\"programming\",\"work\",\"content\"],\"tags\":[\"portable\",\"usbc\"]},{\"id\":\"mon_samsung27\",\"name\":\"Samsung 27-inch 1080p\",\"brand\":\"Samsung\",\"category\":\"monitor\",\"price\":179,\"summary\":\"Larger 1080p. Easier on the eyes for lectures and browsing; a bit soft for dense code.\",\"attributes\":{\"performance\":64,\"battery\":0,\"portability\":22,\"longevity\":72,\"quality\":70},\"goals\":[\"study\",\"work\",\"gaming\"],\"tags\":[\"1080p\",\"27in\"]},{\"id\":\"mon_benq\",\"name\":\"BenQ GW2780 27-inch\",\"brand\":\"BenQ\",\"category\":\"monitor\",\"price\":199,\"summary\":\"Eye-care 27-inch with a thoughtful stand. Built for long reading and writing.\",\"attributes\":{\"performance\":66,\"battery\":0,\"portability\":22,\"longevity\":80,\"quality\":78},\"goals\":[\"study\",\"work\",\"programming\"],\"tags\":[\"1080p\",\"27in\"]},{\"id\":\"mon_dell_qhd\",\"name\":\"Dell S2722DC 27-inch QHD\",\"brand\":\"Dell\",\"category\":\"monitor\",\"price\":249,\"summary\":\"USB-C 1440p. The sweet spot for programming: more pixels without a 4K tax.\",\"attributes\":{\"performance\":82,\"battery\":0,\"portability\":20,\"longevity\":82,\"quality\":84},\"goals\":[\"programming\",\"work\",\"content\"],\"tags\":[\"1440p\",\"usbc\",\"27in\"]},{\"id\":\"mon_lg4k\",\"name\":\"LG 27-inch 4K UHD\",\"brand\":\"LG\",\"category\":\"monitor\",\"price\":329,\"summary\":\"Sharp 4K for photo, video, and dense layouts. Needs a machine that can drive it.\",\"attributes\":{\"performance\":88,\"battery\":0,\"portability\":18,\"longevity\":80,\"quality\":86},\"goals\":[\"content\",\"programming\",\"work\"],\"tags\":[\"4k\",\"27in\"]},{\"id\":\"mon_proart\",\"name\":\"ASUS ProArt 27-inch\",\"brand\":\"ASUS\",\"category\":\"monitor\",\"price\":399,\"summary\":\"Color-accurate creator panel. Overkill if you only need a second window.\",\"attributes\":{\"performance\":90,\"battery\":0,\"portability\":16,\"longevity\":84,\"quality\":92},\"goals\":[\"content\",\"work\"],\"tags\":[\"color\",\"27in\"]},{\"id\":\"hp_koss\",\"name\":\"Koss Porta Pro\",\"brand\":\"Koss\",\"category\":\"headphones\",\"price\":39,\"summary\":\"Open on-ear classic. Cheap, honest sound. No isolation.\",\"attributes\":{\"performance\":58,\"battery\":0,\"portability\":84,\"longevity\":88,\"quality\":70},\"goals\":[\"study\",\"travel\"],\"tags\":[\"wired\",\"open\"]},{\"id\":\"hp_anker\",\"name\":\"Anker Soundcore Q20\",\"brand\":\"Anker\",\"category\":\"headphones\",\"price\":49,\"summary\":\"Budget ANC that is good enough for a library or a bus.\",\"attributes\":{\"performance\":60,\"battery\":88,\"portability\":72,\"longevity\":64,\"quality\":62},\"goals\":[\"study\",\"travel\",\"work\"],\"tags\":[\"anc\",\"wireless\"]},{\"id\":\"hp_hyperx\",\"name\":\"HyperX Cloud II\",\"brand\":\"HyperX\",\"category\":\"headphones\",\"price\":79,\"summary\":\"Comfortable wired headset with a usable mic. Gaming and calls, not travel ANC.\",\"attributes\":{\"performance\":74,\"battery\":0,\"portability\":48,\"longevity\":80,\"quality\":76},\"goals\":[\"gaming\",\"work\",\"programming\"],\"tags\":[\"wired\",\"mic\",\"gaming\"]},{\"id\":\"hp_ch720\",\"name\":\"Sony WH-CH720N\",\"brand\":\"Sony\",\"category\":\"headphones\",\"price\":89,\"summary\":\"Light wireless ANC. The value pick if you need quiet more than prestige.\",\"attributes\":{\"performance\":70,\"battery\":86,\"portability\":78,\"longevity\":72,\"quality\":74},\"goals\":[\"study\",\"work\",\"travel\",\"programming\"],\"tags\":[\"anc\",\"wireless\"]},{\"id\":\"hp_m40x\",\"name\":\"Audio-Technica ATH-M40x\",\"brand\":\"Audio-Technica\",\"category\":\"headphones\",\"price\":99,\"summary\":\"Honest studio closed-backs. Better for mixing and focus than commuting.\",\"attributes\":{\"performance\":82,\"battery\":0,\"portability\":50,\"longevity\":90,\"quality\":84},\"goals\":[\"content\",\"programming\",\"study\"],\"tags\":[\"wired\",\"studio\"]},{\"id\":\"hp_xm4\",\"name\":\"Sony WH-1000XM4\",\"brand\":\"Sony\",\"category\":\"headphones\",\"price\":178,\"summary\":\"Refurbished flagship ANC. Still the reference for long study and travel days.\",\"attributes\":{\"performance\":88,\"battery\":90,\"portability\":76,\"longevity\":80,\"quality\":90},\"goals\":[\"travel\",\"study\",\"work\",\"content\"],\"tags\":[\"anc\",\"wireless\",\"refurbished\"]},{\"id\":\"hp_airpods\",\"name\":\"Apple AirPods Pro 2\",\"brand\":\"Apple\",\"category\":\"headphones\",\"price\":199,\"summary\":\"Pocketable ANC with excellent mics. Best if you already live on iPhone or Mac.\",\"attributes\":{\"performance\":84,\"battery\":78,\"portability\":96,\"longevity\":74,\"quality\":88},\"goals\":[\"travel\",\"work\",\"content\"],\"tags\":[\"anc\",\"earbuds\",\"apple\"]},{\"id\":\"hp_hd560s\",\"name\":\"Sennheiser HD 560S\",\"brand\":\"Sennheiser\",\"category\":\"headphones\",\"price\":179,\"summary\":\"Open reference sound. Superb at a desk; useless on a bus.\",\"attributes\":{\"performance\":90,\"battery\":0,\"portability\":36,\"longevity\":88,\"quality\":90},\"goals\":[\"content\",\"gaming\"],\"tags\":[\"wired\",\"open\",\"studio\"]},{\"id\":\"hp_qc45\",\"name\":\"Bose QuietComfort 45\",\"brand\":\"Bose\",\"category\":\"headphones\",\"price\":249,\"summary\":\"Class-leading comfort and ANC. You pay a comfort premium, not a fidelity premium.\",\"attributes\":{\"performance\":80,\"battery\":84,\"portability\":74,\"longevity\":78,\"quality\":88},\"goals\":[\"travel\",\"study\",\"work\"],\"tags\":[\"anc\",\"wireless\"]},{\"id\":\"hp_xm5\",\"name\":\"Sony WH-1000XM5\",\"brand\":\"Sony\",\"category\":\"headphones\",\"price\":298,\"summary\":\"Current Sony flagship. Excellent, and the extra $120 over XM4 is mostly polish.\",\"attributes\":{\"performance\":92,\"battery\":88,\"portability\":74,\"longevity\":76,\"quality\":93},\"goals\":[\"travel\",\"study\",\"work\",\"content\"],\"tags\":[\"anc\",\"wireless\"]},{\"id\":\"kb_k380\",\"name\":\"Logitech K380\",\"brand\":\"Logitech\",\"category\":\"keyboard\",\"price\":40,\"summary\":\"Compact Bluetooth keyboard. Fine for couches and secondary machines.\",\"attributes\":{\"performance\":55,\"battery\":90,\"portability\":88,\"longevity\":70,\"quality\":64},\"goals\":[\"study\",\"travel\",\"work\"],\"tags\":[\"bluetooth\",\"compact\"]},{\"id\":\"kb_rk84\",\"name\":\"Royal Kludge RK84\",\"brand\":\"Royal Kludge\",\"category\":\"keyboard\",\"price\":69,\"summary\":\"75% mechanical on a budget. The cheapest way to make typing feel serious.\",\"attributes\":{\"performance\":72,\"battery\":70,\"portability\":68,\"longevity\":72,\"quality\":68},\"goals\":[\"programming\",\"gaming\",\"study\"],\"tags\":[\"mechanical\",\"wireless\"]},{\"id\":\"kb_c2\",\"name\":\"Keychron C2\",\"brand\":\"Keychron\",\"category\":\"keyboard\",\"price\":59,\"summary\":\"Full-size wired mechanical. Best if you want numbers and do not travel with it.\",\"attributes\":{\"performance\":74,\"battery\":0,\"portability\":40,\"longevity\":80,\"quality\":74},\"goals\":[\"programming\",\"work\",\"study\"],\"tags\":[\"mechanical\",\"wired\",\"fullsize\"]},{\"id\":\"kb_k2\",\"name\":\"Keychron K2\",\"brand\":\"Keychron\",\"category\":\"keyboard\",\"price\":89,\"summary\":\"75% wireless mechanical that is the default good keyboard for developers.\",\"attributes\":{\"performance\":80,\"battery\":78,\"portability\":72,\"longevity\":84,\"quality\":82},\"goals\":[\"programming\",\"work\",\"study\"],\"tags\":[\"mechanical\",\"wireless\"]},{\"id\":\"kb_mxmini\",\"name\":\"Logitech MX Keys Mini\",\"brand\":\"Logitech\",\"category\":\"keyboard\",\"price\":99,\"summary\":\"Low-profile scissor board with excellent multi-device switching. Quiet offices love it.\",\"attributes\":{\"performance\":76,\"battery\":86,\"portability\":84,\"longevity\":80,\"quality\":86},\"goals\":[\"work\",\"programming\",\"travel\"],\"tags\":[\"lowprofile\",\"bluetooth\"]},{\"id\":\"kb_magic\",\"name\":\"Apple Magic Keyboard\",\"brand\":\"Apple\",\"category\":\"keyboard\",\"price\":99,\"summary\":\"Matches a MacBook deck. Only worth it in an Apple-only desk setup.\",\"attributes\":{\"performance\":70,\"battery\":88,\"portability\":86,\"longevity\":78,\"quality\":84},\"goals\":[\"work\",\"study\"],\"tags\":[\"apple\",\"lowprofile\"]},{\"id\":\"kb_gpro\",\"name\":\"Logitech G Pro\",\"brand\":\"Logitech\",\"category\":\"keyboard\",\"price\":129,\"summary\":\"Tenkeyless gaming board with fast switches. Overbuilt for essays, great for games.\",\"attributes\":{\"performance\":88,\"battery\":0,\"portability\":60,\"longevity\":76,\"quality\":80},\"goals\":[\"gaming\",\"programming\"],\"tags\":[\"mechanical\",\"gaming\"]},{\"id\":\"kb_q1\",\"name\":\"Keychron Q1\",\"brand\":\"Keychron\",\"category\":\"keyboard\",\"price\":169,\"summary\":\"Gasket-mounted aluminum 75%. A luxury typing object, not a portable one.\",\"attributes\":{\"performance\":90,\"battery\":0,\"portability\":32,\"longevity\":92,\"quality\":94},\"goals\":[\"programming\",\"work\"],\"tags\":[\"mechanical\",\"premium\"]},{\"id\":\"mouse_m185\",\"name\":\"Logitech M185\",\"brand\":\"Logitech\",\"category\":\"mouse\",\"price\":15,\"summary\":\"The mouse you forget you own. That is a compliment.\",\"attributes\":{\"performance\":48,\"battery\":80,\"portability\":90,\"longevity\":70,\"quality\":55},\"goals\":[\"study\",\"work\"],\"tags\":[\"wireless\",\"budget\"]},{\"id\":\"mouse_g305\",\"name\":\"Logitech G305\",\"brand\":\"Logitech\",\"category\":\"mouse\",\"price\":39,\"summary\":\"Light wireless sensor that is equally happy in spreadsheets and games.\",\"attributes\":{\"performance\":82,\"battery\":84,\"portability\":80,\"longevity\":78,\"quality\":76},\"goals\":[\"gaming\",\"programming\",\"work\"],\"tags\":[\"wireless\",\"gaming\"]},{\"id\":\"mouse_da\",\"name\":\"Razer DeathAdder Essential\",\"brand\":\"Razer\",\"category\":\"mouse\",\"price\":45,\"summary\":\"Wired ergonomic shape. Simple, durable, no software tax required.\",\"attributes\":{\"performance\":80,\"battery\":0,\"portability\":60,\"longevity\":80,\"quality\":74},\"goals\":[\"gaming\",\"programming\"],\"tags\":[\"wired\",\"gaming\"]},{\"id\":\"mouse_magic\",\"name\":\"Apple Magic Mouse\",\"brand\":\"Apple\",\"category\":\"mouse\",\"price\":79,\"summary\":\"Gestures and a charging port in the wrong place. Buy it only for the ecosystem.\",\"attributes\":{\"performance\":60,\"battery\":82,\"portability\":88,\"longevity\":72,\"quality\":78},\"goals\":[\"work\"],\"tags\":[\"apple\",\"bluetooth\"]},{\"id\":\"mouse_mx3s\",\"name\":\"Logitech MX Master 3S\",\"brand\":\"Logitech\",\"category\":\"mouse\",\"price\":99,\"summary\":\"The workhorse productivity mouse. MagSpeed wheel, quiet clicks, all-day shape.\",\"attributes\":{\"performance\":86,\"battery\":90,\"portability\":64,\"longevity\":86,\"quality\":90},\"goals\":[\"work\",\"programming\",\"content\"],\"tags\":[\"wireless\",\"productivity\"]},{\"id\":\"phone_moto\",\"name\":\"Motorola G Power\",\"brand\":\"Motorola\",\"category\":\"phone\",\"price\":249,\"summary\":\"Big battery, clean Android, no prestige. A tool, not a status object.\",\"attributes\":{\"performance\":55,\"battery\":92,\"portability\":70,\"longevity\":60,\"quality\":58},\"goals\":[\"travel\",\"study\",\"work\"],\"tags\":[\"android\",\"battery\"]},{\"id\":\"phone_a35\",\"name\":\"Samsung Galaxy A35\",\"brand\":\"Samsung\",\"category\":\"phone\",\"price\":329,\"summary\":\"Midrange Samsung with a better camera than its price suggests.\",\"attributes\":{\"performance\":64,\"battery\":80,\"portability\":74,\"longevity\":68,\"quality\":70},\"goals\":[\"content\",\"travel\",\"study\"],\"tags\":[\"android\"]},{\"id\":\"phone_nothing\",\"name\":\"Nothing Phone 2a\",\"brand\":\"Nothing\",\"category\":\"phone\",\"price\":349,\"summary\":\"Clean software and a distinctive design. Strong midrange without the bloat.\",\"attributes\":{\"performance\":70,\"battery\":82,\"portability\":78,\"longevity\":70,\"quality\":76},\"goals\":[\"content\",\"travel\",\"work\"],\"tags\":[\"android\"]},{\"id\":\"phone_se\",\"name\":\"iPhone SE\",\"brand\":\"Apple\",\"category\":\"phone\",\"price\":429,\"summary\":\"Current iOS in a small body. Camera and battery are the compromises.\",\"attributes\":{\"performance\":78,\"battery\":62,\"portability\":90,\"longevity\":80,\"quality\":80},\"goals\":[\"work\",\"travel\"],\"tags\":[\"ios\",\"compact\"]},{\"id\":\"phone_pixel8a\",\"name\":\"Pixel 8a\",\"brand\":\"Google\",\"category\":\"phone\",\"price\":449,\"summary\":\"Best camera in this budget band, with years of software promised.\",\"attributes\":{\"performance\":76,\"battery\":74,\"portability\":80,\"longevity\":84,\"quality\":82},\"goals\":[\"content\",\"travel\",\"work\"],\"tags\":[\"android\",\"camera\"]},{\"id\":\"phone_15\",\"name\":\"iPhone 15\",\"brand\":\"Apple\",\"category\":\"phone\",\"price\":699,\"summary\":\"The default premium phone. USB-C, strong chip, long software life.\",\"attributes\":{\"performance\":90,\"battery\":78,\"portability\":82,\"longevity\":90,\"quality\":92},\"goals\":[\"content\",\"work\",\"travel\"],\"tags\":[\"ios\"]},{\"id\":\"phone_pixel9\",\"name\":\"Pixel 9\",\"brand\":\"Google\",\"category\":\"phone\",\"price\":799,\"summary\":\"Flagship Pixel camera and software. You pay for the computational photography.\",\"attributes\":{\"performance\":88,\"battery\":80,\"portability\":80,\"longevity\":86,\"quality\":90},\"goals\":[\"content\",\"travel\",\"work\"],\"tags\":[\"android\",\"camera\"]},{\"id\":\"bp_basics\",\"name\":\"Amazon Basics 25L\",\"brand\":\"Amazon Basics\",\"category\":\"backpack\",\"price\":29,\"summary\":\"A bag that holds a laptop. Nothing else to say, and that is the point.\",\"attributes\":{\"performance\":50,\"battery\":0,\"portability\":80,\"longevity\":50,\"quality\":48},\"goals\":[\"study\",\"travel\"],\"tags\":[\"budget\"]},{\"id\":\"bp_osprey\",\"name\":\"Osprey Arcane 20\",\"brand\":\"Osprey\",\"category\":\"backpack\",\"price\":89,\"summary\":\"Carry system that actually fits. Daily campus bag that will outlast the laptop.\",\"attributes\":{\"performance\":74,\"battery\":0,\"portability\":86,\"longevity\":88,\"quality\":84},\"goals\":[\"study\",\"travel\",\"work\"],\"tags\":[\"daily\"]},{\"id\":\"bp_herschel\",\"name\":\"Herschel Little America\",\"brand\":\"Herschel\",\"category\":\"backpack\",\"price\":99,\"summary\":\"Looks like a backpack people remember. Carry comfort is average.\",\"attributes\":{\"performance\":62,\"battery\":0,\"portability\":70,\"longevity\":72,\"quality\":78},\"goals\":[\"study\",\"travel\"],\"tags\":[\"style\"]},{\"id\":\"bp_northface\",\"name\":\"The North Face Borealis\",\"brand\":\"The North Face\",\"category\":\"backpack\",\"price\":99,\"summary\":\"The campus default: organization, a real laptop sleeve, and weather resistance.\",\"attributes\":{\"performance\":78,\"battery\":0,\"portability\":82,\"longevity\":84,\"quality\":82},\"goals\":[\"study\",\"travel\",\"work\"],\"tags\":[\"daily\"]},{\"id\":\"bp_timbuk2\",\"name\":\"Timbuk2 Authority\",\"brand\":\"Timbuk2\",\"category\":\"backpack\",\"price\":129,\"summary\":\"Commute pack with a lockable laptop compartment. Built for transit, not trails.\",\"attributes\":{\"performance\":80,\"battery\":0,\"portability\":78,\"longevity\":86,\"quality\":86},\"goals\":[\"work\",\"travel\"],\"tags\":[\"commute\"]},{\"id\":\"bp_peak\",\"name\":\"Peak Design Everyday 20L\",\"brand\":\"Peak Design\",\"category\":\"backpack\",\"price\":239,\"summary\":\"Modular, beautiful, expensive. Makes sense if you carry a camera plus a laptop.\",\"attributes\":{\"performance\":88,\"battery\":0,\"portability\":80,\"longevity\":92,\"quality\":94},\"goals\":[\"content\",\"travel\",\"work\"],\"tags\":[\"camera\",\"premium\"]},{\"id\":\"ssd_kingston\",\"name\":\"Kingston NV2 1TB\",\"brand\":\"Kingston\",\"category\":\"storage\",\"price\":59,\"summary\":\"Internal 1TB NVMe. The cheapest way to stop rationing disk.\",\"attributes\":{\"performance\":70,\"battery\":0,\"portability\":40,\"longevity\":74,\"quality\":68},\"goals\":[\"programming\",\"study\",\"content\"],\"tags\":[\"nvme\",\"internal\"]},{\"id\":\"ssd_wd_hdd\",\"name\":\"WD Elements 2TB HDD\",\"brand\":\"Western Digital\",\"category\":\"storage\",\"price\":69,\"summary\":\"Slow, spacious, cheap. Archives and video dumps, not your working drive.\",\"attributes\":{\"performance\":40,\"battery\":0,\"portability\":60,\"longevity\":70,\"quality\":64},\"goals\":[\"content\",\"study\"],\"tags\":[\"hdd\",\"portable\"]},{\"id\":\"ssd_t7\",\"name\":\"Samsung T7 1TB\",\"brand\":\"Samsung\",\"category\":\"storage\",\"price\":89,\"summary\":\"Pocket SSD that is fast enough for photo libraries and project folders.\",\"attributes\":{\"performance\":84,\"battery\":0,\"portability\":92,\"longevity\":86,\"quality\":88},\"goals\":[\"content\",\"programming\",\"travel\",\"work\"],\"tags\":[\"portable\",\"usb\"]},{\"id\":\"ssd_sandisk\",\"name\":\"SanDisk Extreme 1TB\",\"brand\":\"SanDisk\",\"category\":\"storage\",\"price\":99,\"summary\":\"Rugged portable SSD. The travel drive if the bag gets thrown around.\",\"attributes\":{\"performance\":82,\"battery\":0,\"portability\":90,\"longevity\":88,\"quality\":86},\"goals\":[\"travel\",\"content\"],\"tags\":[\"portable\",\"rugged\"]},{\"id\":\"ssd_990\",\"name\":\"Samsung 990 EVO 2TB\",\"brand\":\"Samsung\",\"category\":\"storage\",\"price\":129,\"summary\":\"Fast internal 2TB. The upgrade that makes an older laptop feel new.\",\"attributes\":{\"performance\":92,\"battery\":0,\"portability\":30,\"longevity\":88,\"quality\":90},\"goals\":[\"programming\",\"content\",\"gaming\"],\"tags\":[\"nvme\",\"internal\"]},{\"id\":\"ssd_x9\",\"name\":\"Crucial X9 2TB\",\"brand\":\"Crucial\",\"category\":\"storage\",\"price\":149,\"summary\":\"2TB portable SSD. Headroom for video projects without a desktop RAID.\",\"attributes\":{\"performance\":86,\"battery\":0,\"portability\":88,\"longevity\":84,\"quality\":84},\"goals\":[\"content\",\"work\"],\"tags\":[\"portable\",\"usb\"]}]");
+var categories = categories_default;
+var demoDecision = demo_decision_default;
+var GOAL_PRESETS = [
+	{
+		id: "programming",
+		label: "Programming"
+	},
+	{
+		id: "study",
+		label: "Study"
+	},
+	{
+		id: "university",
+		label: "University"
+	},
+	{
+		id: "gaming",
+		label: "Gaming"
+	},
+	{
+		id: "content",
+		label: "Content creation"
+	},
+	{
+		id: "travel",
+		label: "Travel"
+	},
+	{
+		id: "work",
+		label: "Work"
+	}
+];
+var PRIORITY_META = [
+	{
+		key: "performance",
+		label: "Performance",
+		hint: "Speed, capability, and how far the kit can be pushed"
+	},
+	{
+		key: "value",
+		label: "Price / Value",
+		hint: "Useful outcome per dollar spent"
+	},
+	{
+		key: "longevity",
+		label: "Longevity",
+		hint: "Years of useful life and how repairable it is"
+	},
+	{
+		key: "portability",
+		label: "Portability",
+		hint: "Weight, size, battery, and travel"
+	},
+	{
+		key: "quality",
+		label: "Quality",
+		hint: "Build, comfort, and finish"
+	}
+];
+var defaultInput = () => ({
+	budget: 1e3,
+	goals: [],
+	mustHaves: [],
+	wants: [],
+	alreadyOwn: [],
+	priorities: {
+		performance: 25,
+		value: 25,
+		longevity: 20,
+		portability: 15,
+		quality: 15
+	}
+});
+//#endregion
+export { defaultInput as a, whatIfPatchSchema as c, decisionInputSchema as i, PRIORITY_META as n, demoDecision as o, categories as r, products as s, GOAL_PRESETS as t };
