@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "reThink",
+      "hasCanvas": false,
+      "bodyTextLen": 1422,
+      "bodyTextHash": "9012aecca466e9bc88998b38cfe08dbda6460e95170b9c1b07da56dd4598e884",
+      "bodyTextPrefix": "reThink Start a Decision Decision support, not shopping Don't ju",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "reThink",
+      "hasCanvas": false,
+      "bodyTextLen": 1422,
+      "bodyTextHash": "9012aecca466e9bc88998b38cfe08dbda6460e95170b9c1b07da56dd4598e884",
+      "bodyTextPrefix": "reThink Start a Decision Decision support, not shopping Don't ju",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}
