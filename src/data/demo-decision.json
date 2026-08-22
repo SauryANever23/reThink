@@ -1,0 +1,14 @@
+{
+  "budget": 1000,
+  "goals": ["programming", "university"],
+  "mustHaves": ["laptop"],
+  "wants": ["monitor", "headphones", "keyboard"],
+  "alreadyOwn": ["mouse", "backpack"],
+  "priorities": {
+    "performance": 40,
+    "value": 20,
+    "longevity": 25,
+    "portability": 15,
+    "quality": 0
+  }
+}

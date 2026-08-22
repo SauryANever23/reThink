@@ -1,0 +1,50 @@
+[
+  {
+    "id": "laptop",
+    "label": "Laptop",
+    "singular": "laptop",
+    "hint": "A portable computer for work, study, or creation"
+  },
+  {
+    "id": "monitor",
+    "label": "Monitor",
+    "singular": "monitor",
+    "hint": "An external display for more screen space"
+  },
+  {
+    "id": "headphones",
+    "label": "Headphones",
+    "singular": "headphones",
+    "hint": "Focus, calls, music, or mixing"
+  },
+  {
+    "id": "keyboard",
+    "label": "Keyboard",
+    "singular": "keyboard",
+    "hint": "A better typing experience than a laptop deck"
+  },
+  {
+    "id": "mouse",
+    "label": "Mouse",
+    "singular": "mouse",
+    "hint": "A pointing device you already may own"
+  },
+  {
+    "id": "phone",
+    "label": "Phone",
+    "singular": "phone",
+    "hint": "A smartphone for communication and capture"
+  },
+  {
+    "id": "backpack",
+    "label": "Backpack",
+    "singular": "backpack",
+    "hint": "Carry the kit without wrecking your back"
+  },
+  {
+    "id": "storage",
+    "label": "Storage",
+    "singular": "drive",
+    "hint": "SSD or portable drive for files and projects"
+  }
+]

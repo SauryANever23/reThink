@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Instrument Serif", ui-serif, Georgia, "Times New Roman", serif;
+
+  --color-bg: #f3efe6;
+  --color-fg: #161513;
+  --color-muted: #6e6a62;
+  --color-subtle: #9a958c;
+  --color-surface: #faf7f0;
+  --color-surface-2: #efeae0;
+  --color-paper: #f3efe6;
+  --color-primary: #1f3d32;
+  --color-primary-hover: #18312a;
+  --color-primary-fg: #f3efe6;
+  --color-border: color-mix(in oklab, #161513 12%, transparent);
+  --color-ring: #1f3d32;
+  --color-gain: #1f3d32;
+  --color-gain-soft: #dce8e2;
+  --color-give: #8f4a42;
+  --color-give-soft: #f0e0dc;
+  --color-ink: #161513;
+  --color-ink-fg: #f3efe6;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-bg);
+    color: var(--color-fg);
+    min-height: 100dvh;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: var(--color-primary);
+    color: var(--color-primary-fg);
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+}
+
+:root {
+  --shadow-border: 0 0 0 1px color-mix(in oklab, #161513 10%, transparent);
+  --shadow-border-hover: 0 0 0 1px color-mix(in oklab, #161513 18%, transparent);
+  --ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.rise {
+  animation: rise 500ms var(--ease-smooth-out) both;
+}
+.rise-2 {
+  animation: rise 500ms var(--ease-smooth-out) 80ms both;
+}
+.rise-3 {
+  animation: rise 500ms var(--ease-smooth-out) 140ms both;
+}
+.rise-4 {
+  animation: rise 500ms var(--ease-smooth-out) 200ms both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 44px;
+  background: transparent;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 2px;
+  background: var(--color-border);
+  border-radius: 999px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -7px;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--color-primary);
+  box-shadow: 0 0 0 4px var(--color-bg);
+}
+input[type="range"]::-moz-range-track {
+  height: 2px;
+  background: var(--color-border);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--color-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .rise-2,
+  .rise-3,
+  .rise-4 {
+    animation: none;
+  }
+}
